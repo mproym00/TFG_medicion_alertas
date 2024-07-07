@@ -1,0 +1,23 @@
+import picamera
+import time
+from datetime import datetime
+
+def capture_photo():
+    # Generar el nombre del archivo con el formato especificado
+    timestamp = datetime.now().strftime("%d-%m-%y_%H-%M-%S")
+    filename = f"pic_{timestamp}.jpg"
+
+    # Iniciar la cámara y tomar la foto
+    with picamera.PiCamera() as camera:
+        camera.resolution = (1920, 1080)  # Establecer la resolución deseada
+        camera.start_preview()
+        # Esperar un momento para que la cámara se ajuste a la luz
+        time.sleep(2)
+        camera.capture(filename)
+        print(f"Foto capturada: {filename}")
+
+if __name__ == "__main__":
+    while True:
+        capture_photo()
+        # Esperar x segundos hasta la siguiente foto
+        time.sleep(5)
