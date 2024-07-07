@@ -1,0 +1,138 @@
+- id: '1717518831770'
+alias: Instantáneas
+description: ''
+trigger:
+- platform: time_pattern
+seconds: '0'
+- platform: time_pattern
+seconds: '30'
+condition: []
+action:
+- service: camera.snapshot
+metadata: {}
+data:
+  filename: /media/snapshots/{{now().strftime("%Y%m%d-%H%M%S")}}.jpg
+target:
+  device_id: 118f11718985fa2bbffb231ec5631c28
+mode: single
+- id: '1718440437410'
+alias: Aditivo 1 Hot
+description: ''
+trigger:
+- platform: numeric_state
+entity_id:
+- sensor.tasmota_sht3x_44_temperature
+above: 26.5
+condition: []
+action:
+- service: notify.persistent_notification
+metadata: {}
+data:
+  message: Aditivo 1 por encima de 26ºC
+- service: notify.notify
+metadata: {}
+data:
+  message: Aditivo 1 por encima de 26ºC
+- service: notify.telegram_mproym
+metadata: {}
+data:
+  title: Aditivo 1
+  message: Aditivo 1 por encima de 26
+mode: single
+- id: '1718440908975'
+alias: Bañera caliente underheat
+description: ''
+trigger:
+- platform: numeric_state
+entity_id:
+- sensor.tasmota_sht3x_45_temperature
+below: 24
+condition: []
+action:
+- service: notify.notify
+metadata: {}
+data:
+  message:  Bañera caliente underheat (under 57ºC).
+- service: notify.persistent_notification
+metadata: {}
+data:
+  message:  Bañera caliente underheat (under 57ºC).
+- service: notify.telegram_mproym
+metadata: {}
+data:
+  title: Underheat Bañera Caliente
+  message: Bañera caliente underheat (under 57ºC).
+mode: single
+- id: '1718445242435'
+alias: Aditivo 2 Hot
+description: ''
+trigger:
+- platform: numeric_state
+entity_id:
+- sensor.tasmota_sht3x_45_temperature
+above: 26.5
+condition: []
+action:
+- service: notify.notify
+metadata: {}
+data:
+  message: Aditivo 2 por encima de 26ºC
+- service: notify.persistent_notification
+metadata: {}
+data:
+  message: Aditivo 2 por encima de 26ºC
+- service: notify.telegram_mproym
+metadata: {}
+data:
+  title: Aditivo 2
+  message: Aditivo 2 por encima de 26ºC
+mode: single
+- id: '1719578421904'
+alias: Aditivo 1 Cold
+description: ''
+trigger:
+- platform: numeric_state
+entity_id:
+- sensor.tasmota_sht3x_44_temperature
+below: 24
+condition: []
+action:
+- service: notify.persistent_notification
+metadata: {}
+data:
+  message: Aditivo 1 por encima de 26ºC
+  title: Sobrecalentamiento en bañera fría
+- service: notify.notify
+metadata: {}
+data:
+  message: Aditivo 1 por encima de 26ºC
+- service: notify.telegram_mproym
+metadata: {}
+data:
+  title: Aditivo 1
+  message: Aditivo 1 por encima de 26
+mode: single
+- id: '1719578513171'
+alias: Aditivo 2 Cold
+description: ''
+trigger:
+- platform: numeric_state
+entity_id:
+- sensor.tasmota_sht3x_45_temperature
+below: 24
+condition: []
+action:
+- service: notify.notify
+metadata: {}
+data:
+  message: Aditivo 2 por encima de 26ºC
+- service: notify.persistent_notification
+metadata: {}
+data:
+  message: Aditivo 2 por encima de 26ºC
+- service: notify.telegram_mproym
+metadata: {}
+data:
+  title: Aditivo 2
+  message: Aditivo 2 por encima de 26ºC
+mode: single

@@ -1,0 +1,23 @@
+default_config:
+
+homeassistant:
+    allowlist_external_dirs:
+      - '/media/snapshots'
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+telegram_bot:
+  - platform: polling
+    api_key: 7394026099:AAFOoUYNJXsYa50Wmz2Do2iQJmOF2k7Jaig
+    allowed_chat_ids:
+      - 837358358
+
+notify:
+  - platform: telegram
+    name: Telegram mproym
+    chat_id: 837358358
