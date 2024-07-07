@@ -1,0 +1,75 @@
+%%%%% VISUALIZAR GRÁFICAS %%%%%
+sequenceDiagram
+    Actor Usuario
+    participant Interfaz de Home Assistant
+    participant Home Assistant
+    participant Base de Datos
+
+    Usuario->>Interfaz de Home Assistant: Accede a la interfaz web
+    Usuario->>Interfaz de Home Assistant: Selecciona el sensor deseado
+    Interfaz de Home Assistant->>Home Assistant: Solicita datos históricos del sensor
+    Home Assistant->>Base de Datos: Consulta datos históricos del sensor
+    Base de Datos-->>Home Assistant: Retorna datos históricos del sensor
+    Home Assistant-->>Interfaz de Home Assistant: Envía datos históricos del sensor
+    Interfaz de Home Assistant-->>Usuario: Muestra gráfica con datos del sensor
+
+
+%%%%% MOD UMBRALES %%%%%
+
+sequenceDiagram
+    Actor Usuario
+    participant Interfaz de Home Assistant
+    participant Home Assistant
+    participant Archivo de Configuración (automations.yaml)
+
+    Usuario->>Interfaz de Home Assistant: Accede a la interfaz web
+    Usuario->>Interfaz de Home Assistant: Navega a configuración de automatización
+    Usuario->>Interfaz de Home Assistant: Modifica umbral de disparo
+    Usuario->>Interfaz de Home Assistant: Guarda nueva configuración
+    Interfaz de Home Assistant->>Home Assistant: Envía nueva configuración
+    Home Assistant->>Archivo de Configuración (automations.yaml): Actualiza archivo de configuración
+    Archivo de Configuración (automations.yaml)-->>Home Assistant: Confirmación de actualización
+    Home Assistant-->>Interfaz de Home Assistant: Notificación de actualización exitosa
+
+
+
+
+%%%%% VISUALIZAR INSTANTÁNEAS %%%%%
+
+sequenceDiagram
+    Actor Usuario
+    participant Interfaz de Home Assistant
+    participant Home Assistant
+    participant Base de Datos
+
+    Usuario->>Interfaz de Home Assistant: Accede a la interfaz web
+    Usuario->>Interfaz de Home Assistant: Navega a la sección de media -> snapshots
+    Usuario->>Interfaz de Home Assistant: Solicita visualizar una imagen
+    Interfaz de Home Assistant->>Home Assistant: Envía solicitud
+    Home Assistant->>Base de Datos: Recupera imagen de /media/snapshots
+    Base de Datos-->>Home Assistant: Devuelve la imagen solicitada
+    Home Assistant-->>Interfaz de Home Assistant: Envía la imagen
+    Interfaz de Home Assistant-->>Usuario: Muestra la imagen en la interfaz web
+
+
+
+
+%%%%% EXPORTAR CSV %%%%%
+
+sequenceDiagram
+    Actor Usuario
+    participant Interfaz de Home Assistant
+    participant Home Assistant
+    participant Base de Datos de Home Assistant
+
+    Usuario->>Interfaz de Home Assistant: Accede a la interfaz web
+    Usuario->>Interfaz de Home Assistant: Navega a la sección de sensores
+    Usuario->>Interfaz de Home Assistant: Selecciona el sensor y el rango de tiempo
+    Interfaz de Home Assistant->>Home Assistant: Solicita datos del sensor
+    Home Assistant->>Base de Datos de Home Assistant: Consulta datos del sensor
+    Base de Datos de Home Assistant-->>Home Assistant: Devuelve datos del sensor
+    Home Assistant-->>Interfaz de Home Assistant: Envía datos del sensor
+    Usuario->>Interfaz de Home Assistant: Solicita exportar datos
+    Interfaz de Home Assistant->>Home Assistant: Solicita exportación de datos en CSV
+    Home Assistant->>Home Assistant: Genera archivo CSV con datos del sensor
+    Home Assistant-->>Usuario: Descarga del archivo CSV

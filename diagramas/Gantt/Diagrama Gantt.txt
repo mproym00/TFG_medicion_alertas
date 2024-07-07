@@ -1,0 +1,33 @@
+gantt
+    title Diagrama de Gantt del TFG
+    dateFormat  YYYY-MM-DD
+    section Sprint 1: Planificación y Configuración Inicial (4 semanas)
+    Investigación                             :a0, 2023-12-19, 4w
+    Planificación del Proyecto                :a1, 2024-01-16, 1w
+    Configuración de Entorno de Desarrollo    :a2, 2024-01-23, 1w
+    Instalación de Home Assistant en Raspberry Pi: a3, 2024-01-30, 1w
+    Configuración de Tasmota y Mosquitto MQTT :a4, 2024-02-06, 1w
+
+    section Sprint 2: Integración de Sensores y Actuadores (4 semanas)
+    Documentación                             :b0, 2024-02-13, 4w
+    Integración de SHT-30 en Home Assistant   :b1, 2024-02-13, 2w
+    Integración de HC-SR04 en Home Assistant  :b2, 2024-02-27, 2w
+
+    section Sprint 3: Implementación de Automatizaciones (4 semanas)
+    Creación de Automatizaciones Básicas      :c1, 2024-03-12, 2w
+    Pruebas de Automatizaciones               :c2, 2024-03-26, 2w
+
+    section Sprint 4: Integración de la Cámara y Funcionalidades Adicionales (4 semanas)
+    Integración de ESP32 CAM en Home Assistant: d1, 2024-04-09, 2w
+    Configuración de Notificaciones           :d2, 2024-04-23, 2w
+
+    section Sprint 5: Pruebas y Ajustes (5 semanas)
+    Pruebas de Sistema Completo               :e1, 2024-05-07, 3w
+    Ajustes Basados en Pruebas                :e2, 2024-05-28, 3w
+
+    section Sprint 6: Documentación y Presentación (6 semanas)
+    Documentación del Proyecto                :f1, 2024-06-11, 3w
+    Preparación de la Presentación Final      :f2, 2024-07-02, 2w
+
+    section Sprint 7: Cierre del Proyecto (1 semana)
+    Revisión Final y Cierre del Proyecto      :g1, 2024-07-15, 1w
